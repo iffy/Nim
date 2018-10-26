@@ -31,6 +31,7 @@ elif doslikeFileSystem:
   doAssert unixToNativePath("../../abc") == "..\\..\\abc"
   doAssert unixToNativePath("/abc", "a") == "a:\\abc"
   doAssert unixToNativePath("/abc/def", "a") == "a:\\abc\\def"
+  doAssert unixToNativePath("/abc/def", "C").parentDir == "C:\\abc"
 else:
   #Tests for unix
   doAssert unixToNativePath("./") == "./"
@@ -39,6 +40,7 @@ else:
   doAssert unixToNativePath("../../abc") == "../../abc"
   doAssert unixToNativePath("/abc", "a") == "/abc"
   doAssert unixToNativePath("/abc/def", "a") == "/abc/def"
+  doAssert unixToNativePath("/abc/def").parentDir == "/abc"
 
 block extractFilenameTest:
   doAssert extractFilename("") == ""
